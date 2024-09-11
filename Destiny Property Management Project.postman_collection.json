@@ -1,0 +1,3586 @@
+{
+	"info": {
+		"_postman_id": "721dfc72-a03b-4c4c-a3ce-896f92501005",
+		"name": "Destiny Property Management Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30682783"
+	},
+	"item": [
+		{
+			"name": "(General function) Search scenario I - look for Properties in Riga for the desired period",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"location\": \"Riga\",\r\n  \"startDate\": \"2024-10-01\",\r\n  \"endDate\": \"2024-10-10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/search/properties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search",
+						"properties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Search scenario II - look for Properties with Wi-Fi and an infinity pool worth below 2000 for November",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"maxPrice\": 2000,\r\n  \"amenityIds\": [1, 2],  // WiFi and Pool\r\n  \"startDate\": \"2024-11-01\",\r\n  \"endDate\": \"2024-11-10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/search/properties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search",
+						"properties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Search scenario III - look for Properties of 50 square metres and above, rated no less than 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rating\": 4,\r\n  \"minSizeM2\": 50,\r\n  \"startDate\": \"2024-10-01\",\r\n  \"endDate\": \"2024-10-10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/search/properties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search",
+						"properties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) View the details of a Property",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/property/details/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"property",
+						"details",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Sign up (register) as Tenant",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Velvet\",\r\n    \"lastName\": \"Velour\",\r\n    \"phone\": \"123456789\",\r\n    \"email\": \"propman_testmail2@inbox.lv\",\r\n    \"iban\": \"DE89370400440532013000\",\r\n    \"paymentCardNo\": \"4111111111111111\",\r\n    \"cardValidityDate\": \"2024-12\",\r\n    \"cvv\": \"999\",\r\n    \"login\": \"VeeVee\",\r\n    \"password\": \"Venus2003\",\r\n    \"reEnterPassword\": \"Venus2003\",\r\n    \"preferredCurrency\": {\r\n        \"id\": 1,\r\n        \"designation\": \"EUR\",\r\n        \"isBaseCurrency\": true,\r\n        \"rateToBase\": 1.0\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register/tenant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register",
+						"tenant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Sign up (register) as Manager",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"PRIVATE\",\r\n    \"managerName\": \"Alistair Grout\",\r\n    \"description\": \"Specializes in mansions\",\r\n    \"phone\": \"+1234567890\",\r\n    \"email\": \"propman_testmail2@inbox.lv\",\r\n    \"iban\": \"DE89370400440532013000\",\r\n    \"paymentCardNo\": \"4111111111111111\",\r\n    \"cardValidityDate\": \"2025-12\",\r\n    \"cvv\": \"888\",\r\n    \"login\": \"AGrout\",\r\n    \"password\": \"Sanitarium18\",\r\n    \"reEnterPassword\": \"Sanitarium18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register/manager",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register",
+						"manager"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Log in as a Tenant",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"KennyM\",\r\n    \"password\": \"CheatingDeath\",\r\n    \"userType\": \"TENANT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Log in as a Manager",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"SUllman\",\r\n    \"password\": \"HoraceDerwent\",\r\n    \"userType\": \"MANAGER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Log in as an Admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"AnotherAdmin\",\r\n    \"password\": \"AdminPassword123\",\r\n    \"userType\": \"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/admin-login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"admin-login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) View Manager details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/getProfile/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"getProfile",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) View a Manager's Property portfolio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/getPropertyPortfolio/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"getPropertyPortfolio",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Verify a Tenant's login attempt if executed from a new IP address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencode",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "otp",
+							"value": "301711",
+							"description": "CHANGE THE VALUE TO THE CODE FROM THE EMAIL!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/verify-otp-tenant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"verify-otp-tenant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Verify a Manager's login attempt if executed from a new IP address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencode",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "otp",
+							"value": "168082",
+							"description": "CHANGE THE VALUE TO THE CODE FROM THE EMAIL!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/verify-otp-manager",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"verify-otp-manager"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Verify an Admin's login attempt if executed from a new IP address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencode",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "otp",
+							"value": "201973",
+							"description": "CHANGE THE VALUE TO THE CODE FROM THE EMAIL!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/verify-otp-admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"verify-otp-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Change a user's own password (requires authentication)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RedHair",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "RebeccaR",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"RebeccaR\",\r\n  \"userType\": \"TENANT\",\r\n  \"newPassword\": \"Mulholland89\",\r\n  \"reEnterNewPassword\": \"Mulholland89\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/password/change",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"password",
+						"change"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Request password change by email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"propman_testmail2@inbox.lv\",\r\n  \"userType\": \"TENANT\",\r\n  \"newPassword\": \"Selassie2024\",\r\n  \"reEnterNewPassword\": \"Selassie2024\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/password/request-reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"password",
+						"request-reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(General function) Get Reviews for a Property",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/review/getByProperty/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"review",
+						"getByProperty",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(DefaultAdmin function) Add a new Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n    \"name\": \"Karl Denke\",\r\n    \"login\": \"KDenke\",\r\n    \"password\": \"Angst\",\r\n    \"email\": \"propman_testmail1@inbox.lv\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admins-control/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admins-control",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(DefaultAdmin function) Delete an Admin by login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admins-control/delete?login=AnotherAdmin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admins-control",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "login",
+							"value": "AnotherAdmin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Add a Property",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"managerId\": 5,\r\n    \"status\": \"AVAILABLE\",\r\n    \"type\": \"APARTMENT\",\r\n    \"address\": \"123 Maple Street\",\r\n    \"country\": \"Wonderland\",\r\n    \"settlement\": \"Newtown\",\r\n    \"sizeM2\": 85.5,\r\n    \"description\": \"A cozy apartment in the heart of Newtown.\",\r\n    \"rating\": 4.5,\r\n    \"pricePerDay\": 75.0,\r\n    \"pricePerWeek\": 500.0,\r\n    \"pricePerMonth\": 1800.0,\r\n    \"currencyId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/add_property",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"add_property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Remove a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/delete_property/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"delete_property",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Create a Payout manually",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/new_payout?bookingId=14&managerId=4&amount=324.00&currencyId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"new_payout"
+					],
+					"query": [
+						{
+							"key": "bookingId",
+							"value": "14"
+						},
+						{
+							"key": "managerId",
+							"value": "4"
+						},
+						{
+							"key": "amount",
+							"value": "324.00"
+						},
+						{
+							"key": "currencyId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Create a Refund manually",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/new_refund?bookingId=1&tenantId=2&amount=100.00&currencyId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"new_refund"
+					],
+					"query": [
+						{
+							"key": "bookingId",
+							"value": "1"
+						},
+						{
+							"key": "tenantId",
+							"value": "2"
+						},
+						{
+							"key": "amount",
+							"value": "100.00"
+						},
+						{
+							"key": "currencyId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Add a new currency",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/add_currency?designation=GBP&rateToBase=0.85",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"add_currency"
+					],
+					"query": [
+						{
+							"key": "designation",
+							"value": "GBP"
+						},
+						{
+							"key": "rateToBase",
+							"value": "0.85"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) View pending Refunds",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/pending_refunds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"pending_refunds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Settle a Refund",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"tenantId\": 2,\r\n    \"bookingId\": 1,\r\n    \"amount\": 100,\r\n    \"createdAt\": \"2024-07-19T16:05:37.919965\",\r\n    \"currency\": {\r\n        \"id\": 1,\r\n        \"designation\": \"EUR\",\r\n        \"isBaseCurrency\": true,\r\n        \"rateToBase\": 1.00\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/settle_refund",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"settle_refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) View pending Payouts",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/pending_payouts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"pending_payouts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Settle a Payout",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n  \"managerId\": 4,\r\n  \"bookingId\": 14,\r\n  \"amount\": 324,\r\n  \"createdAt\": \"2024-07-19T15:57:37.976194\",\r\n  \"currency\": {\r\n    \"id\": 1,\r\n    \"designation\": \"EUR\",\r\n    \"isBaseCurrency\": true,\r\n    \"rateToBase\": 1.0\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/settle_payout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"settle_payout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Adjust Numerical Configs",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refundPaymentPeriodDays\": 10,\r\n    \"payoutPaymentPeriodDays\": 25,\r\n    \"claimPeriodDays\": 5,\r\n    \"paymentPeriodDays\": 7,\r\n    \"earlyTerminationPenalty\": 5,\r\n    \"systemInterestRate\": 12,\r\n    \"lateCancellationPeriodInDays\": 3,\r\n    \"urgentCancellationPeriodInDays\": 1,\r\n    \"urgentCancellationPenaltyPercentage\": 50,\r\n    \"lateCancellationPenaltyPercentage\": 20,\r\n    \"regularCancellationPenaltyPercentage\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/set_numerical_configs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"set_numerical_configs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Add an Amenity",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/add_amenity?amenityDescription=Cute%20Piggies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"add_amenity"
+					],
+					"query": [
+						{
+							"key": "amenityDescription",
+							"value": "Cute%20Piggies"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Remove an Amenity",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/remove_amenity/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"remove_amenity",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Toggle a Tenant's active status",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/toggle_tenant_status/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"toggle_tenant_status",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Toggle a Manager's active status",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/toggle_manager_status/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"toggle_manager_status",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Register a Tenant (by an Admin)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"phone\": \"+1234567890\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"iban\": \"DE89370400440532013000\",\r\n  \"paymentCardNo\": \"4921817336104919\",\r\n  \"cardValidityDate\": \"2025-12\",\r\n  \"cvv\": \"394\",\r\n  \"login\": \"johndoe\",\r\n  \"password\": \"SecurePass123\",\r\n  \"reEnterPassword\": \"SecurePass123\",\r\n  \"preferredCurrency\": {\r\n    \"id\": 1,\r\n    \"designation\": \"EUR\",\r\n    \"isBaseCurrency\": true,\r\n    \"rateToBase\": 1.0\r\n  }\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/register_tenant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"register_tenant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Register a Manager (by an Admin)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n    \"type\": \"PRIVATE\",\r\n    \"managerName\": \"John Doe\",\r\n    \"description\": \"Manages several properties in the downtown area\",\r\n    \"phone\": \"+1234567890\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"iban\": \"DE89370400440532013000\",\r\n    \"paymentCardNo\": \"4921817336104919\",\r\n    \"cardValidityDate\": \"2025-12\",\r\n    \"cvv\": \"087\",\r\n    \"login\": \"johndoe_manager\",\r\n    \"password\": \"Password123\",\r\n    \"reEnterPassword\": \"Password123\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/register_manager",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"register_manager"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Update a Tenant's details",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tenantId\": 3,\r\n  \"firstName\": \"Kyle\",\r\n  \"lastName\": \"Broflowski\",\r\n  \"phone\": \"+1800333333\",\r\n  \"email\": \"propman_testmail1@inbox.lv\",\r\n  \"iban\": \"GB33BUKB20201555555555\",\r\n  \"paymentCardNo\": \"4532015112830366\",\r\n  \"cardValidityDate\": \"2025-12\",\r\n  \"cvv\": [\"1\", \"4\", \"8\"],\r\n  \"rating\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/update_tenant/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"update_tenant",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Update a Manager's data by an Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"managerName\": \"Sidney Nettleson\",\r\n    \"description\": \"Dedicated to managing your comfort to perfection\",\r\n    \"phone\": \"+37167120000\",\r\n    \"email\": \"propman_testmail1@inbox.lv\",\r\n    \"iban\": \"DE89370400440532013000\",\r\n    \"paymentCardNo\": \"4111111111111111\",\r\n    \"cardValidityDate\": \"2026-08\",\r\n    \"cvv\": [\"1\", \"2\", \"3\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/update_manager/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"update_manager",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Delete a Tenant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/delete_tenant/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"delete_tenant",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Delete a Manager",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/delete_manager/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"delete_manager",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Set a new base currency",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "newBaseCurrencyId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/set_new_base_currency",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"set_new_base_currency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Delete a Review",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/delete-review/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"delete-review",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) View Claims",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/view-claims",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"view-claims"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Change a Currency exchange rate",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/change-rate/3/38.42",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"change-rate",
+						"3",
+						"38.42"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Admin function) Resolve a Claim",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GroundControl",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DefaultAdmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "We do consent with your claim statement, Ms, Paul, and are ready to support you should you choose to sue. However, please note that Tweek Tweak has a morbid passion for coffee, as it is widely known, so we also suggest you would consider the opprtunity to come to an amicable agreement with the tenant if possible.",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/resolve_claim/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"resolve_claim",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Update the Manager's profile (both email and card details are changed)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HeavensDoor",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "CPaul",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"managerName\": \"Christiane Paul\",\r\n  \"description\": \"Updated description\",\r\n  \"phone\": \"+491514831976\",\r\n  \"email\": \"propman_testmail2@inbox.lv\",\r\n  \"iban\": \"FR1420041010050500013M02606\",\r\n  \"cardValidityDate\": \"2026-12\",\r\n  \"paymentCardNo\": \"5105105105105100\",\r\n  \"cvv\": \"007\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/updateProfile/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"updateProfile",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Get bookings for a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/property/12/bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"property",
+						"12",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) View all Bookings for a specific Manager",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/manager/2/bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"manager",
+						"2",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Get unpaid Bills for a specific Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/properties/12/unpaid-bills",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"properties",
+						"12",
+						"unpaid-bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Get all unpaid Bills for a specific Manager",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/managers/2/unpaid-bills",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"managers",
+						"2",
+						"unpaid-bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Update Property details",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"A cozy 2-bedroom apartment in the city center.\",\r\n    \"type\": \"APARTMENT\",\r\n    \"status\": \"AVAILABLE\",\r\n    \"sizeM2\": 85,\r\n    \"address\": \"123 Main Street, Apt 4B\",\r\n    \"settlement\": \"Springfield\",\r\n    \"country\": \"USA\",\r\n    \"pricePerDay\": 120.50,\r\n    \"pricePerWeek\": 800.00,\r\n    \"pricePerMonth\": 3000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/updateProperty/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"updateProperty",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager fuinction) Prepare a financial statements for a specific Manager within the boundaries of a specified period",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/managers/1/financial-statement?periodStart=2020-07-01&periodEnd=2024-07-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"managers",
+						"1",
+						"financial-statement"
+					],
+					"query": [
+						{
+							"key": "periodStart",
+							"value": "2020-07-01"
+						},
+						{
+							"key": "periodEnd",
+							"value": "2024-07-31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Allows Managers to add new Properties",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"managerId\": 1,\r\n    \"status\": \"AVAILABLE\",\r\n    \"type\": \"APARTMENT\",\r\n    \"address\": \"123 Elm Street\",\r\n    \"country\": \"Countryland\",\r\n    \"settlement\": \"Smalltown\",\r\n    \"sizeM2\": 75.0,\r\n    \"description\": \"A cozy apartment in a quiet neighborhood.\",\r\n    \"rating\": 4.5,\r\n    \"pricePerDay\": 80.0,\r\n    \"pricePerWeek\": 500.0,\r\n    \"pricePerMonth\": 1800.0,\r\n    \"currencyId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/addProperty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"addProperty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Set a discount or surcharge for property rental fee for the specified period",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"propertyId\": 4,\r\n    \"managerId\": 2,\r\n    \"percentage\": 15.0,\r\n    \"periodStart\": \"2024-08-01\",\r\n    \"periodEnd\": \"2024-08-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/discount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"discount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Reset all discounts for a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HeavensDoor",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "CPaul",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "propertyId",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "periodStart",
+							"value": "2024-09-01",
+							"type": "text"
+						},
+						{
+							"key": "periodEnd",
+							"value": "2024-09-30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/discount/reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"discount",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Get Bookings pending approval",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/bookings/pending-approval/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"bookings",
+						"pending-approval",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Approve a Booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/bookings/approve/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"bookings",
+						"approve",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Decline a Booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HeavensDoor",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "CPaul",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/bookings/decline/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"bookings",
+						"decline",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Delete a Property by Manager",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "SanookMakMak",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LitaC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/delete_property/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"delete_property",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Add photos to a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": [
+								"/C:/Users/User2013/Desktop/Studies/Piggies/Piggy1.jpg",
+								"/C:/Users/User2013/Desktop/Studies/Piggies/Piggy2.jpg"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/addPhotos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"addPhotos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Remove a photo of a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/removePhoto/1?photoUrl=Piggy1.jpg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"removePhoto",
+						"1"
+					],
+					"query": [
+						{
+							"key": "photoUrl",
+							"value": "Piggy1.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Lock a property for a certain period",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/property/unavailable?propertyId=1&periodStart=2024-10-16&periodEnd=2024-10-20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"property",
+						"unavailable"
+					],
+					"query": [
+						{
+							"key": "propertyId",
+							"value": "1"
+						},
+						{
+							"key": "periodStart",
+							"value": "2024-10-16"
+						},
+						{
+							"key": "periodEnd",
+							"value": "2024-10-20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Remove locks from a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/unlock_property/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"unlock_property",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Add a Bill to a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 150.75,\r\n  \"currency\": {\r\n    \"id\": 2,\r\n    \"designation\": \"USD\",\r\n    \"isBaseCurrency\": true,\r\n    \"rateToBase\": 1.05\r\n  },\r\n  \"expenseCategory\": \"Utilities\",\r\n  \"dueDate\": \"2024-12-01T00:00:00.000Z\",\r\n  \"recipient\": \"Utility Company\",\r\n  \"recipientIBAN\": \"US12345678901234567890123456\",\r\n  \"issuedAt\": \"2024-11-01T00:00:00.000Z\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/property/4/addBill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"property",
+						"4",
+						"addBill"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Remove a Bill from a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Nosferatu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "GGolden",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/property/6/remove_bill/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"property",
+						"6",
+						"remove_bill",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Rate a Tenant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/rate_tenant/1/2/15/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"rate_tenant",
+						"1",
+						"2",
+						"15",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) File a Claim in regard of a Booking on behalf of a Manager",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Nosferatu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "GGolden",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bookingId",
+							"value": "14",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "While the tenant herself was nice, her vitae could be tastier",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/submitClaim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"submitClaim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Manage Amenities for a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Ductus",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SNettleson",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"propertyId\": 3,\r\n  \"amenityIds\": [1, 2, 4, 7]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/amenities/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"amenities",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) View the profile of a booking Tenant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Nosferatu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "GGolden",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/managerial/tenant-profile/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"tenant-profile",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Accept an Early Termination Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "SanookMakMak",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LitaC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "requestId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "reply",
+							"value": "Mai bpen rai, dee mak-mak kha:)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/early-termination/accept",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"early-termination",
+						"accept"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Manager function) Decline an Early Termination Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Nosferatu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "GGolden",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "requestId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "reply",
+							"value": "Dear. Mr. Tucker. Do not worry,I will visit you personally this night to... clarify any animal related claims you might have., I am sure we can figure out a solution.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/managerial/early-termination/decline",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"managerial",
+						"early-termination",
+						"decline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) View a Tenant's own profile",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "CheatingDeath",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "KennyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/getProfile/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"getProfile",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Update a Tenant's own profile (without changing the email, but changing card details)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "TokenOfHope",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "TolkienB",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tolkien\",\r\n  \"lastName\": \"Black\",\r\n  \"phone\": \"+37112345678\",\r\n  \"email\": \"propman_testmail1@inbox.lv\",\r\n  \"iban\": \"LV80BANK0001234567890\",\r\n  \"paymentCardNo\": \"4111111111111111\", \r\n  \"cardValidityDate\": \"2025-12\",\r\n  \"cvv\": \"123\",\r\n  \"rating\": 4.7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/updateProfile/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"updateProfile",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Update a Tenant's own profile (email is changed)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "TokenOfHope",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "TolkienB",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tolkien\",\r\n  \"lastName\": \"Black\",\r\n  \"phone\": \"+37112345678\",\r\n  \"email\": \"propman_testmail2@inbox.lv\",\r\n  \"iban\": \"LV80BANK0001234567890\",\r\n  \"paymentCardNo\": \"4111111111111111\", \r\n  \"cardValidityDate\": \"2025-12\",\r\n  \"cvv\": \"123\",\r\n  \"rating\": 4.7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/updateProfile/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"updateProfile",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) View booking history",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RespectMyAuth",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "EricC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/getHistory/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"getHistory",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Save a Property to favorites",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RespectMyAuth",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "EricC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantId\": 4,\r\n    \"propertyId\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/saveFavoriteProperty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"saveFavoriteProperty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{Tenant function} Get a Tenant's list of favorite Properties",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RespectMyAuth",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "EricC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/getFavoriteProperties/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"getFavoriteProperties",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Remove a Property from the favorites list",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RespectMyAuth",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "EricC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/removeFavoriteProperty/4/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"removeFavoriteProperty",
+						"4",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Get outstanding payments for a specific Tenant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "BestFriend",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BebeS",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/outstanding-payments?tenantId=11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"outstanding-payments"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) View a Tenant's current bookings",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "CraigT",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "TouchTheSky",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/current-bookings?tenantId=8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"current-bookings"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Request early termination of a current Booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ClassyTouch",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "GregoryY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// Replace the date with a relevant one!\r\n{\r\n  \"bookingId\": 10,\r\n  \"terminationDate\": \"2024-08-23T12:00:00\",\r\n  \"comment\": \"Requesting early termination due to unforeseen circumstances.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/requestEarlyTermination",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"requestEarlyTermination"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Process (make) a Payment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ScienceRules",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "WendyT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tenant/processPayment/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"processPayment",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Rate a property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RedHair",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "RebeccaR",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantId\": 12,\r\n    \"bookingId\": 12,\r\n    \"rating\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/rate_property",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"rate_property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Submit a Claim",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "CheatingDeath",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "KennyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookingId\": 15,\r\n    \"description\": \"I would like the Overlook Hotel to pay me a partial refund - while the stay in the Presidential Suite was nice in general, each night I was getting killed by ghosts of some mafia types from the 1960s with axes and shotguns.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/submit_claim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"submit_claim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) View completed payments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "CheatingDeath",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "KennyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenantId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/tenant/completed-payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tenant",
+						"completed-payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Leave a Review",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RespectMyAuth",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "EricC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"propertyId\": 2,\r\n  \"tenantId\": 4,\r\n  \"text\": \"Everything is OK, fast food facilities are within reasonable reach. Food delivery service also works fine. But what's with the water?! Respect my authority!!!\",\r\n  \"rating\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/review/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"review",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Book a Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "CheatingDeath",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "KennyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"propertyId\": 4,\r\n  \"startDate\": \"2024-09-26T00:00:00.000Z\",\r\n  \"endDate\": \"2024-09-30T00:00:00.000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservation/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservation",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant function) Cancel a Booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "PinewoodDerby",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "StanM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reservationId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservation/cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservation",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant and Manager function) Get a conversation between users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/communication/getConversation/1/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"communication",
+						"getConversation",
+						"1",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Tenant and Manager function) Send a Message",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HoraceDerwent",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SUllman",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiverId\": 5,\r\n  \"message\": \"Hello, Ms. Testaburger. Thank you for your interest in visiting the Overlook Hotel on recommendation from your late colleague Kenny McCormick. I am Stewart Ullman... the Manager. Is there anything I can help you with?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/communication/send/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"communication",
+						"send",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
