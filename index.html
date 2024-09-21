@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PropMan - Project Resources</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .container {
+            margin: 40px auto;
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+        }
+        .description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .link-list {
+            text-align: left;
+            margin: 20px 0;
+            padding-left: 0;
+        }
+        .link-list li {
+            list-style: none;
+            margin: 15px 0;
+        }
+        .link-list a {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        .link-list a:hover {
+            color: #0f172a;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+        }
+        .language-switch {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+        .language-switch:hover {
+            background-color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PropMan</h1>
+        <p>Project Links and Resources</p>
+    </header>
+    
+    <div class="container">
+        <div class="description">
+            <p>Welcome to the PropMan project resource page. Here you will find links to the project repository, manuals, and other related files.</p>
+            <p>Добро пожаловать на страницу ресурсов проекта PropMan. Здесь вы найдете ссылки на репозиторий проекта, инструкции и другие связанные файлы.</p>
+        </div>
+    
+        <div class="link-lists">
+            <h2>Links (English)</h2>
+            <ul class="link-list">
+                <li><strong>The project:</strong> <a href="https://github.com/SergejsP84/PropManProject" target="_blank">https://github.com/SergejsP84/PropManProject</a></li>
+                <li><strong>1) Collection of Postman requests for testing:</strong> <a href="https://github.com/SergejsP84/PropMan---external-files/blob/main/Destiny%20Property%20Management%20Project.postman_collection.json" target="_blank">Download Postman Collection</a></li>
+                <li><strong>2) .bat file for setting up system variables:</strong> <a href="https://github.com/SergejsP84/PropMan---external-files/blob/main/propman_env_setup.bat" target="_blank">Download .bat file</a></li>
+                <li><strong>3) Project Manual in English (PDF):</strong> <a href="https://github.com/SergejsP84/PropMan---external-files/blob/main/ENG_PropMan%20Project%20Manual.pdf" target="_blank">Download English Manual</a></li>
+                <li><strong>4) Project Manual in Russian (PDF):</strong> <em>Coming Soon</em></li>
+            </ul>
+    
+            <h2>Ссылки (Русский)</h2>
+            <ul class="link-list">
+                <li><strong>Проект:</strong> <a href="https://github.com/SergejsP84/PropManProject" target="_blank">https://github.com/SergejsP84/PropManProject</a></li>
+                <li><strong>1) Коллекция запросов Postman для тестирования:</strong> <a href="https://github.com/SergejsP84/PropMan---external-files/blob/main/Destiny%20Property%20Management%20Project.postman_collection.json" target="_blank">Скачать коллекцию Postman</a></li>
+                <li><strong>2) .bat файл для настройки системных переменных:</strong> <a href="https://github.com/SergejsP84/PropMan---external-files/blob/main/propman_env_setup.bat" target="_blank">Скачать .bat файл</a></li>
+                <li><strong>3) Руководство по проекту на английском (PDF):</strong> <a href="https://github.com/SergejsP84/PropMan---external-files/blob/main/ENG_PropMan%20Project%20Manual.pdf" target="_blank">Скачать руководство на английском</a></li>
+                <li><strong>4) Руководство по проекту на русском (PDF):</strong> <em>Скоро будет</em></li>
+            </ul>
+        </div>
+    
+        <a href="#" class="language-switch" onclick="toggleLanguage()">Switch to Russian | Переключить на английский</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 PropMan Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const description = document.querySelector('.description');
+            const isEnglish = description.textContent.includes('Welcome');
+            
+            if (isEnglish) {
+                description.innerHTML = '<p>Добро пожаловать на страницу ресурсов проекта PropMan. Здесь вы найдете ссылки на репозиторий проекта, инструкции и другие связанные файлы.</p>' +
+                                         '<p>Welcome to the PropMan project resource page. Here you will find links to the project repository, manuals, and other related files.</p>';
+            } else {
+                description.innerHTML = '<p>Welcome to the PropMan project resource page. Here you will find links to the project repository, manuals, and other related files.</p>' +
+                                         '<p>Добро пожаловать на страницу ресурсов проекта PropMan. Здесь вы найдете ссылки на репозиторий проекта, инструкции и другие связанные файлы.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
